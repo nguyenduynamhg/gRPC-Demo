@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package golang;
+
+option go_package = "./calculatorpb";
+
+message SumRequest{
+    int32 num1 = 1;
+    int32 num2 = 2;
+}
+message SumResponse{
+    int32 result = 1;
+}
+service CalculatorService{
+    rpc Sum (SumRequest) returns (SumResponse){}
+}
+
+
+//protoc calculatorpb/calculator.proto  --go_out=plugins=grpc:.
